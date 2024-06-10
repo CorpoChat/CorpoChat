@@ -1,7 +1,8 @@
 <section class="container">
+    <label style="font-family: 'Segoe UI'; font-size: 42px; font-weight: bold;">CorpoChat</label>
     <h1>Sign Up</h1>
 
-    <form class="form">
+    <form class="form" [formGroup]="formSignUp">
         <div class="flex-column">
             <label>Full Name </label>
         </div>
@@ -24,7 +25,7 @@
                     </path>
                 </g>
             </svg>
-            <input type="email" class="input" placeholder="Enter your Email">
+            <input formControlName="email" type="email" class="input" placeholder="Enter your Email">
         </div>
 
         <div class="flex-column">
@@ -39,7 +40,7 @@
                     d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0">
                 </path>
             </svg>
-            <input type="password" class="input" placeholder="Enter your Password"
+            <input formControlName="password" type="password" class="input" placeholder="Enter your Password"
                 [type]="passwrdHidden ? 'password' : 'text'">
             <svg *ngIf="passwrdHidden" viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg"
                 (click)="passwrdHidden = !passwrdHidden">
@@ -67,7 +68,7 @@
                     d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0">
                 </path>
             </svg>
-            <input type="password" class="input" placeholder="Confirm your Password"
+            <input formControlName="confirmPassword" type="password" class="input" placeholder="Confirm your Password"
                 [type]="passwrdHidden ? 'password' : 'text'">
             <svg *ngIf="passwrdHidden" viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg"
                 (click)="passwrdHidden = !passwrdHidden">

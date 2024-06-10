@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
+import { BasePageComponent } from './components/base-page/base-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
     LoginComponent,
     NotfoundComponent,
     SignupComponent,
-    MainComponent
+    MainComponent,
+    BasePageComponent
   ],
   imports: [
     FormsModule,

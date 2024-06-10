@@ -1,7 +1,8 @@
 <section class="container">
+    <label style="font-family: 'Segoe UI'; font-size: 42px; font-weight: bold;">CorpoChat</label>
     <h1>Sign In</h1>
 
-    <form class="form" [formGroup]="formSignUp">
+    <form class="form" [formGroup]="formSignIn">
         <div class="flex-column">
             <label>Email </label>
         </div>
@@ -45,14 +46,6 @@
         </div>
 
         <div class="flex-row">
-            <div class="checkbox-wrapper-46">
-                <input type="checkbox" id="cbx-46" class="inp-cbx" />
-                <label for="cbx-46" class="cbx"><span>
-                        <svg viewBox="0 0 12 10" height="10px" width="12px">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                        </svg></span><span (click)="remember = !remember">Remember me</span>
-                </label>
-            </div>
             <span class="span">Forgot password?</span>
         </div>
         <button class="button-submit" (click)="logIn()">Sign In</button>

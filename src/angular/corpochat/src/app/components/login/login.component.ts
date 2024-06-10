@@ -2,54 +2,52 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActiveToast, ToastrService } from 'ngx-toastr';
+import { BasePageComponent } from '../base-page/base-page.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent extends BasePageComponent {
 
-  formSignUp: FormGroup;
-  activeToast: ActiveToast<any>[] = [];
-  remember: boolean = false;
+  formSignIn: FormGroup;
   passwrdHidden: boolean = true;
 
-
-  constructor(private toastr: ToastrService, 
-    private router: Router
+  constructor(
+    toastr: ToastrService,
+    router: Router
   ) {
-    this.formSignUp = new FormGroup({
+    super(toastr, router);
+    this.formSignIn = new FormGroup({
       email: new FormControl(null),
       password: new FormControl(null),
-    })
+    });
   }
 
   logIn() {
-    const email = this.formSignUp.get('email')?.value;
-    const password = this.formSignUp.get('password')?.value;
+    const email = this.formSignIn.get('email')?.value;
+    const password = this.formSignIn.get('password')?.value;
 
     if (!this.validateCredentials(email, password))
       return;
-    
-    this.toastr.success('', 'Success');
-    this.router.navigate(['home']);
+
+    this.navigateTo('home');
   }
 
   private validateCredentials(email: string, password: string): boolean {
-    this.activeToast.forEach(toast => { this.toastr.clear(toast.toastId )});
-    this.activeToast = [];
+    this.clearPopup();
 
     if (email == null || email.trim() == "") {
-      this.activeToast.push(this.toastr.error('', 'Email is required'));
+      this.showError('Email is required', '');
       return false;
     }
-    
+
     if (password == null || password.trim() == "") {
-      this.activeToast.push(this.toastr.error('', 'Password is required'));
+      this.showError('Password is required', '');
       return false;
     }
-    
+
     return true;
   }
 }

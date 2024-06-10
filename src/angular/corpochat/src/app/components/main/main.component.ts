@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BasePageComponent } from '../base-page/base-page.component';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-main',
@@ -11,10 +12,12 @@ import { Router } from '@angular/router';
 export class MainComponent extends BasePageComponent {
 
   constructor(
+    strs: StorageService,
     toastr: ToastrService,
     router: Router
   ) {
-    super(toastr, router);
+    super(strs, toastr, router);
   }
 
+  
 }

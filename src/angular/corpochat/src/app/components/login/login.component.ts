@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ActiveToast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { BasePageComponent } from '../base-page/base-page.component';
+import { StorageService } from 'src/app/services/storage.service';
+import { KeyAccess } from 'src/app/global/key-access';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +13,21 @@ import { BasePageComponent } from '../base-page/base-page.component';
 })
 export class LoginComponent extends BasePageComponent {
 
-  formSignIn: FormGroup;
+  formSignIn!: FormGroup;
   passwrdHidden: boolean = true;
 
   constructor(
+    strs: StorageService,
     toastr: ToastrService,
     router: Router
   ) {
-    super(toastr, router);
+    super(strs, toastr, router);
+
+    if (strs.getData(KeyAccess.LoggedKey) === true) {
+      this.navigateTo('home');
+      return;
+    }
+
     this.formSignIn = new FormGroup({
       email: new FormControl(null),
       password: new FormControl(null),
@@ -32,6 +41,7 @@ export class LoginComponent extends BasePageComponent {
     if (!this.validateCredentials(email, password))
       return;
 
+    this.strs.setData(KeyAccess.LoggedKey, true);
     this.navigateTo('home');
   }
 

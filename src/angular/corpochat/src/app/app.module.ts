@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
 import { BasePageComponent } from './components/base-page/base-page.component';
+import { StorageService } from './services/storage.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [StorageService],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })

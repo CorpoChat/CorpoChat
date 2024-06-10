@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActiveToast, ToastrService } from 'ngx-toastr';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-base-page',
@@ -11,7 +12,9 @@ export class BasePageComponent {
 
   activeToast: ActiveToast<any>[] = [];
 
-  constructor(private toastr: ToastrService,
+  constructor(
+    protected strs: StorageService,
+    private toastr: ToastrService,
     private router: Router
   ) {
   }

@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BasePageComponent } from '../base-page/base-page.component';
+import { StorageService } from 'src/app/services/storage.service';
+import { KeyAccess } from 'src/app/global/key-access';
 
 @Component({
   selector: 'app-signup',
@@ -15,10 +17,11 @@ export class SignupComponent extends BasePageComponent {
   passwrdHidden: boolean = true;
 
   constructor(
+    strs: StorageService,
     toastr: ToastrService,
     router: Router
   ) {
-    super(toastr, router);
+    super(strs, toastr, router);
     this.formSignUp = new FormGroup({
       email: new FormControl(null),
       password: new FormControl(null),
@@ -39,6 +42,7 @@ export class SignupComponent extends BasePageComponent {
     if (!this.validateCredentials(email, password))
       return;
 
+    this.strs.setData(KeyAccess.LoggedKey, true);
     this.navigateTo('home');
   }
 

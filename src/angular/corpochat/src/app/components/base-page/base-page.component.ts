@@ -11,6 +11,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class BasePageComponent {
 
+  userMail!: string;
   activeToast: ActiveToast<any>[] = [];
 
   constructor(
@@ -19,6 +20,10 @@ export class BasePageComponent {
     private toastr: ToastrService,
     private router: Router
   ) {
+  }
+
+  protected validateUserLogged() {
+
   }
 
   protected navigateTo(route: string) {

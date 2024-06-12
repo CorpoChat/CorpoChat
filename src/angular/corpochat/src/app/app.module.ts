@@ -14,12 +14,14 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
 import { BasePageComponent } from './components/base-page/base-page.component';
 import { StorageService } from './services/storage.service';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: MainComponent },
+  { path: 'chat', component: ChatComponent },
   { path: '**', component: NotfoundComponent }
 ];
 
@@ -30,7 +32,8 @@ const routes: Routes = [
     NotfoundComponent,
     SignupComponent,
     MainComponent,
-    BasePageComponent
+    BasePageComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,
@@ -42,7 +45,7 @@ const routes: Routes = [
     ToastrModule.forRoot({
       timeOut: 3000,
       preventDuplicates: true,
-      progressBar: true,
+      progressBar: false,
     }),
     RouterModule.forRoot(routes)
   ],

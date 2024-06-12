@@ -10,3 +10,5 @@
 /src/csharp_web_api/corpochat/obj
 /src/csharp_web_api/corpochat/bin/Debug/net6.0
 /src/csharp_web_api/corpochat/Properties/launchSettings.json
+/src/csharp_web_api/corpochat/bin/Release/net6.0
+/src/csharp_web_api/corpochat/.vs/ProjectEvaluation

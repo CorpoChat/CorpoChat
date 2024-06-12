@@ -1,1 +1,66 @@
-<p>chat works!</p>
+<div class="phone-frame">
+    <div class="phone-screen">
+        <div class="imageContainer">
+            <div class="content">
+                CHAT
+            </div>
+            <div class="overlay"></div>
+        </div>
+        <svg class="button-menu button-menu1" height="25" width="25"
+            onclick="document.querySelector('.phone-screen').classList.toggle('active')">
+            <circle class="bg" r="12" cx="12" cy="12" />
+            <path class="line line1" d="M 6,8 H 18" />
+            <path class="line line2" d="M 6,12 H 18" />
+            <path class="line line3" d="M 6,16 H 18" />
+        </svg>
+        <div class="menu" onclick="document.querySelector('.phone-screen').classList.remove('active')">
+
+            <!-- Chat -->
+            <div class="option" (click)="navigateTo('chat')">
+                <svg class="food" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 24 24"
+                    data-name="Camada 1">
+                    <title>Chat</title>
+                    <path
+                        d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22C17.5228 22 22 17.5228 22 12C22 10.1786 21.513 8.47087 20.6622 7"
+                        stroke="#40a225" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <div class="text">Chat</div>
+            </div>
+
+            <!-- Menu -->
+            <div class="option" (click)="navigateTo('home')">
+                <svg class="food" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 24 24"
+                    data-name="Camada 1">
+                    <title>Menu</title>
+                    <path d="M4 6H20M4 12H20M4 18H20" stroke="#FFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <div class="text">Menu</div>
+            </div>
+
+            <!-- Profile -->
+            <div class="option" (click)="navigateTo('profile')">
+                <svg class="food" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 24 24"
+                    data-name="Camada 1">
+                    <title>Profile</title>
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>Profile</title>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)"
+                                fill="#1f9bd1">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path
+                                        d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598"
+                                        id="profile_round-[#1f9bd1]"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <div class="text">Profile</div>
+            </div>
+        </div>
+    </div>
+</div>

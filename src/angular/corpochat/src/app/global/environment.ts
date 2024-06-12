@@ -3,5 +3,6 @@ export const Environment = Object.freeze({
     
     // Storage Keys
     KEY_USER_LOGGED: 'is_user_logged',
+    KEY_ACCOUNT_STORED: 'stored_acc',
     KEY_MESSAGES_HISTORY: 'messages_history'
 });

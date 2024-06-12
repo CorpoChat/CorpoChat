@@ -6,7 +6,7 @@ namespace corpochat.ResourceAccess.Interfaces
 {
     public interface IAccounts : IDisposable
     {
-        IEnumerable<Account> GetAccounts();
+        IEnumerable<string> GetAccounts();
         bool AddNewUser(Account account, string confirmPassword);
         Account GetLogin(Account account);
         bool DeleteAccount(string email);

@@ -15,6 +15,8 @@ import { MainComponent } from './components/main/main.component';
 import { BasePageComponent } from './components/base-page/base-page.component';
 import { StorageService } from './services/storage.service';
 import { ChatComponent } from './components/chat/chat.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: MainComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: NotfoundComponent }
 ];
 
@@ -33,7 +36,8 @@ const routes: Routes = [
     SignupComponent,
     MainComponent,
     BasePageComponent,
-    ChatComponent
+    ChatComponent,
+    ProfileComponent
   ],
   imports: [
     FormsModule,
@@ -41,6 +45,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,

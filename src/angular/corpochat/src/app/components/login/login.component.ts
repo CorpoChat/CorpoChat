@@ -6,6 +6,8 @@ import { BasePageComponent } from '../base-page/base-page.component';
 import { StorageService } from 'src/app/services/storage.service';
 import { Environment } from 'src/app/global/environment';
 import { CorpochatService } from 'src/app/services/corpochat.service';
+import { Account } from 'src/app/model/account.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,8 @@ export class LoginComponent extends BasePageComponent {
   ) {
     super(strs, ccs, toastr, router);
 
-    if (strs.getData(Environment.KEY_USER_LOGGED) === true) {
+    if (strs.getData(Environment.KEY_USER_LOGGED) === true && 
+        strs.getData(Environment.KEY_ACCOUNT_STORED) != null) {
       this.navigateTo('home');
       return;
     }
@@ -37,29 +40,26 @@ export class LoginComponent extends BasePageComponent {
   }
 
   logIn() {
-    const email = this.formSignIn.get('email')?.value;
-    const password = this.formSignIn.get('password')?.value;
+    const mail = this.formSignIn.get('email')?.value;
+    const pswd = this.formSignIn.get('password')?.value;
+    const account: Account = {
+      email: mail,
+      password: pswd,
+      name: ''
+    };
 
-    if (!this.validateCredentials(email, password))
-      return;
-
-    this.strs.setData(Environment.KEY_USER_LOGGED, true);
-    this.navigateTo('home');
-  }
-
-  private validateCredentials(email: string, password: string): boolean {
-    this.clearPopup();
-
-    if (email == null || email.trim() == "") {
-      this.showError('Email is required', '');
-      return false;
-    }
-
-    if (password == null || password.trim() == "") {
-      this.showError('Password is required', '');
-      return false;
-    }
-
-    return true;
+    this.ccs.getLogin(account)
+      .subscribe({
+        next: (result: Account) => {
+          this.strs.setData(Environment.KEY_ACCOUNT_STORED, result);
+          this.strs.setData(Environment.KEY_USER_LOGGED, true);
+          this.navigateTo('home');
+        },
+        error: (err: HttpErrorResponse) => {
+          err.error.forEach((element: { message: string; }) => {
+            this.showError('Error', element.message);
+          });
+        },
+      });
   }
 }

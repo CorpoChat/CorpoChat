@@ -5,6 +5,7 @@ using corpochat.DataContext;
 using corpochat.ResourceAccess.Builder;
 using corpochat.Models.Exceptions;
 using corpochat.Models;
+using System.Linq;
 
 namespace corpochat.ResourceAccess
 {
@@ -19,13 +20,13 @@ namespace corpochat.ResourceAccess
             _tableName = _database.ACC_TABLE;
         }
 
-        public IEnumerable<Account> GetAccounts()
+        public IEnumerable<string> GetAccounts()
         {
             using var command = _database.CreateCommand();
             command.CommandText = $@"SELECT * FROM {_tableName}";
             var reader = command.ExecuteReader();
 
-            return AccountEntityBuilder.Build(reader);
+            return AccountEntityBuilder.Build(reader).Select(acc => acc.Email);
         }
 
         public bool AddNewUser(Account account, string confirmPassword)
@@ -104,6 +105,7 @@ namespace corpochat.ResourceAccess
                 throw validation;
             }
 
+            result[0].Password = "";
             return result[0];
         }
 

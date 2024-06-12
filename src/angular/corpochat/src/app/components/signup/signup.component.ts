@@ -6,6 +6,8 @@ import { BasePageComponent } from '../base-page/base-page.component';
 import { StorageService } from 'src/app/services/storage.service';
 import { Environment } from 'src/app/global/environment';
 import { CorpochatService } from 'src/app/services/corpochat.service';
+import { Account } from 'src/app/model/account.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -25,27 +27,50 @@ export class SignupComponent extends BasePageComponent {
   ) {
     super(strs, ccs, toastr, router);
     this.formSignUp = new FormGroup({
+      name: new FormControl(null),
       email: new FormControl(null),
       password: new FormControl(null),
       confirmPassword: new FormControl(null),
     });
   }
-  
-  signup() {
-    const email = this.formSignUp.get('email')?.value;
-    const password = this.formSignUp.get('password')?.value;
-    const confirmPassword = this.formSignUp.get('confirmPassword')?.value;
 
-    if (password != confirmPassword) {
-      this.showError('Passwords need to match', '');
+  signup() {
+    const name = this.formSignUp.get('name')?.value;
+    const mail = this.formSignUp.get('email')?.value;
+    const pswd = this.formSignUp.get('password')?.value;
+    const confirmPassword = this.formSignUp.get('confirmPassword')?.value;
+    const mailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
+
+    const account: Account = {
+      email: mail,
+      password: pswd,
+      name: name
+    };
+
+    if (name == null || name == '' || name.length < 3) {
+      this.showError('Invalid Name', 'Invalid name, you need at leat 4 caracters');
       return;
     }
 
-    if (!this.validateCredentials(email, password))
+    if (!this.validateCredentials(mail, pswd))
       return;
 
-    this.strs.setData(Environment.KEY_USER_LOGGED, true);
-    this.navigateTo('home');
+    this.ccs.addNewUser(account, confirmPassword)
+      .subscribe({
+        next: (result) => {
+          if (result) {
+            this.strs.setData(Environment.KEY_ACCOUNT_STORED, account);
+            this.strs.setData(Environment.KEY_USER_LOGGED, true);
+            this.navigateTo('home');
+          }
+        },
+        error: (err: HttpErrorResponse) => {
+          err.error.forEach((element: { message: string; }) => {
+            console.log(element.message);
+            this.showError('Error', element.message);
+          });
+        },
+      });
   }
 
   private validateCredentials(email: string, password: string): boolean {

@@ -20,7 +20,7 @@ export class StorageService {
     localStorage.removeItem(key);
   }
 
-  clearAll(key: string) {
+  clearAll() {
     localStorage.clear();
   }
 }

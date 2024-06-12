@@ -30,9 +30,6 @@ export class ChatComponent extends BasePageComponent implements OnInit {
     this.messages = this.strs.getData(Environment.KEY_MESSAGES_HISTORY);
 
     this.ccs.onMessageReceived((emailTarget, message) => {
-      if (emailTarget != this.userMail)
-        return;
-
       if (!this.messages.has(emailTarget))
         this.messages.set(emailTarget, []);
 

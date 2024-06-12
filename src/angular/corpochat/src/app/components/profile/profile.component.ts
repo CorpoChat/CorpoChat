@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { CorpochatService } from 'src/app/services/corpochat.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { BasePageComponent } from '../base-page/base-page.component';
+import { Environment } from 'src/app/global/environment';
+import { Account } from 'src/app/model/account.model';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +14,9 @@ import { BasePageComponent } from '../base-page/base-page.component';
 })
 export class ProfileComponent extends BasePageComponent {
 
+  userName: string = '';
+  userMail: string = '';
+
   constructor(
     strs: StorageService,
     ccs: CorpochatService,
@@ -19,7 +24,13 @@ export class ProfileComponent extends BasePageComponent {
     router: Router
   ) {
     super(strs, ccs, toastr, router);
+    const acc: Account = strs.getData(Environment.KEY_ACCOUNT_STORED);
+    this.userName = acc.name;
+    this.userMail = acc.email;
   }
 
-  
+  logout() {
+    this.strs.clearAll();
+    this.navigateTo('login');
+  }
 }

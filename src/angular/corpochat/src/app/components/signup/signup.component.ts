@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BasePageComponent } from '../base-page/base-page.component';
 import { StorageService } from 'src/app/services/storage.service';
-import { KeyAccess } from 'src/app/global/key-access';
+import { Environment } from 'src/app/global/environment';
+import { CorpochatService } from 'src/app/services/corpochat.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,10 +19,11 @@ export class SignupComponent extends BasePageComponent {
 
   constructor(
     strs: StorageService,
+    ccs: CorpochatService,
     toastr: ToastrService,
     router: Router
   ) {
-    super(strs, toastr, router);
+    super(strs, ccs, toastr, router);
     this.formSignUp = new FormGroup({
       email: new FormControl(null),
       password: new FormControl(null),
@@ -42,7 +44,7 @@ export class SignupComponent extends BasePageComponent {
     if (!this.validateCredentials(email, password))
       return;
 
-    this.strs.setData(KeyAccess.LoggedKey, true);
+    this.strs.setData(Environment.KEY_USER_LOGGED, true);
     this.navigateTo('home');
   }
 

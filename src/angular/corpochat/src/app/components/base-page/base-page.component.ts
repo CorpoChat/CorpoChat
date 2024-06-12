@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActiveToast, ToastrService } from 'ngx-toastr';
+import { CorpochatService } from 'src/app/services/corpochat.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class BasePageComponent {
 
   constructor(
     protected strs: StorageService,
+    protected ccs: CorpochatService,
     private toastr: ToastrService,
     private router: Router
   ) {

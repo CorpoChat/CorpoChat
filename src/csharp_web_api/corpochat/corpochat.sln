@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "corpochat", "corpochat.csproj", "{FED0317C-8342-4C52-8D25-970BD0BBCE8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FED0317C-8342-4C52-8D25-970BD0BBCE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED0317C-8342-4C52-8D25-970BD0BBCE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED0317C-8342-4C52-8D25-970BD0BBCE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED0317C-8342-4C52-8D25-970BD0BBCE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ACC4618-0D8E-493A-B25D-229A5803F201}
+	EndGlobalSection
+EndGlobal

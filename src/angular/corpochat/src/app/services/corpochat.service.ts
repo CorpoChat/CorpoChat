@@ -17,7 +17,6 @@ export class CorpochatService {
   ) {
     this.apiUrl = Environment.BASE_API_URL;
     this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrl + '/Chat').build();
-    this.hubConnection.start();
   }
 
   public sendMessage(emailTarget: string, message: string): void {

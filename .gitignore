@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/csharp_web_api/Corpochat.API/.vs/Corpochat.API/config
+/src/csharp_web_api/Corpochat.API/.vs/Corpochat.API
+/src/csharp_web_api/Corpochat.API/bin
+/src/csharp_web_api/Corpochat.API/obj
+/src/csharp_web_api/corpochat/.vs/corpochat
+/src/csharp_web_api/corpochat/obj
+/src/csharp_web_api/corpochat/bin/Debug/net6.0
+/src/csharp_web_api/corpochat/Properties/launchSettings.json

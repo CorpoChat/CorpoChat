@@ -1,3 +1,5 @@
+
+
 body {
     align-items: center;
     display: flex;
@@ -161,6 +163,7 @@ body {
     height: calc(100vh - 75px);
     background-color: #fff;
     display: flex;
+    overflow: hidden;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -175,8 +178,9 @@ body {
 .chat-messages {
     flex: 1;
     padding: 15px;
-    overflow-y: auto;
     display: flex;
+    
+    overflow: hidden;
     flex-direction: column;
 }
 
